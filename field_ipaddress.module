@@ -1,0 +1,18 @@
+<?php
+
+declare(strict_types = 1);
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function field_ipaddress_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.field_ipaddress':
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides an IP address field that will habndle single IP addresses and IP ranges. Can be IPv4 or IPv6.') . '</p>';
+      return $output;
+  }
+}
+

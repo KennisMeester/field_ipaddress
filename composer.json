@@ -1,0 +1,11 @@
+{
+    "name": "drupal/field_ipaddress",
+    "description": "This provides a field for storing an IP address or range.",
+    "type": "drupal-module",
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0",
+        "markrogoyski/ipv4-subnet-calculator": "2.0.*"
+    }
+}
