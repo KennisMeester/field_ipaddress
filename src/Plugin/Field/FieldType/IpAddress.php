@@ -141,11 +141,9 @@ class IpAddress extends FieldItemBase implements IpAddressInterface {
    * {@inheritdoc}
    */
   public static function generateSampleValue(FieldDefinitionInterface $field_definition = NULL) {
-    $random = new \Drupal\know2how\Component\Utility\Random();
-
     $values = [
       // Always fill the base ip.
-      'ip' => $random->ipv4(),
+      'ip' => self::ipv4(),
       'ip_cidr' => 32,
       'ip_end' => '',
       'ip_from' => '',
@@ -161,7 +159,7 @@ class IpAddress extends FieldItemBase implements IpAddressInterface {
         break;
       case 1:
         $type = 'range';
-        $values['ip_end'] = $random->ipv4();
+        $values['ip_end'] = self::ipv4();
         break;
     }
 
@@ -207,6 +205,16 @@ class IpAddress extends FieldItemBase implements IpAddressInterface {
     }
 
     return $raw;
+  }
+
+  /**
+   * Generate a random IPv4 address.
+   *
+   * @return string
+   *   A random valid IPv4 address.
+   */
+  protected static function ipv4(): string {
+    return mt_rand(0, 255) . "." . mt_rand(0, 255) . "." . mt_rand(0, 255) . "." . mt_rand(0, 255);
   }
 
 }
