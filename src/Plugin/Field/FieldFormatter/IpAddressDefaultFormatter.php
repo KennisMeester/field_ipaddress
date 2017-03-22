@@ -27,7 +27,15 @@ class IpAddressDefaultFormatter extends FormatterBase {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode): array {
-    die("!");
+      $elements = [];
+
+    foreach ($items as $delta => $item) {
+      $elements[$delta] = [
+        '#markup' => $item->getRawIP(),
+      ];
+    }
+
+    return $elements;
   }
 
 }
